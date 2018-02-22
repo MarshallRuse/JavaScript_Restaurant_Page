@@ -1,16 +1,68 @@
 body {
 	background-image: url("https://img.aws.livestrongcdn.com/ls-article-image-673/ds-photo/getty/article/114/111/skd187415sdc.jpg");
 }
+
 #content {
 	background-color: rgba(255,238,204,0.3);
 }
 
 #content img {
 	width: 50%;
-	margin: auto;
+	margin-left: 25%;
+	margin-right: 25%;
+	border: 5px outset lightgrey;
 }
+
 h1 {
 	color: blue;
 	text-align: center;
 	font-weight: bold;
 }
+
+p {
+	font-size: 1.2em;
+	background-color: rgba(255,238,204,0.5);
+}
+
+.tabs {
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #f1f1f1;
+}
+
+.tabs button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+}
+
+.tabs button:hover {
+	background-color: #ddd;
+}
+
+.tabs button.active {
+	background-color: #ccc;
+}
+
+.tabContent {
+	display: block;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+}
+
+.tabContent ol {
+	margin-left: 40%;
+	margin-right: 40%;
+	text-align: center;
+	background-color: rgba(255,238,204,0.5);
+}
+
+.tabContent li {
+	padding: 5px;
+}
+

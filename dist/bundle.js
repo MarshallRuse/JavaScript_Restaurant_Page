@@ -76,18 +76,99 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+const tabFunctions = {
+	homePage: __WEBPACK_IMPORTED_MODULE_0__initialPage_js__["a" /* default */],
+	menu: __WEBPACK_IMPORTED_MODULE_1__menu_js__["a" /* default */],
+	aboutUs: __WEBPACK_IMPORTED_MODULE_2__about_js__["a" /* default */]
+};
+
+//set up tab area
+const tabs = document.createElement("DIV");
+const tabsClass = document.createAttribute("class");
+tabsClass.value = "tabs";
+tabs.setAttributeNode(tabsClass);
+
+
+//set up the tab buttons
+//home page tab button
+const homePageBtn = document.createElement("BUTTON");
+//add the button text
+const homePageBtnText = document.createTextNode("Home");
+homePageBtn.appendChild(homePageBtnText);
+//add the tabLinks class
+let tabLinksClass = document.createAttribute("class");
+tabLinksClass.value = "tabLinks";
+homePageBtn.setAttributeNode(tabLinksClass);
+//add the data attribute for its .js file to run
+homePageBtn.setAttribute("data-tab-function", "homePage"); //I just discovered .setAttribute(), leaving the rest as is b/c can be done both ways/laziness 
+homePageBtn.addEventListener("click", openTab);
+tabs.appendChild(homePageBtn);
+
+//menu tab button
+const menuBtn = document.createElement("BUTTON");
+const menuBtnText = document.createTextNode("Menu");
+menuBtn.appendChild(menuBtnText);
+tabLinksClass = document.createAttribute("class");
+tabLinksClass.value = "tabLinks";
+menuBtn.setAttributeNode(tabLinksClass);
+// set the data attribute
+menuBtn.setAttribute("data-tab-function", "menu"); 
+menuBtn.addEventListener("click",openTab);
+tabs.appendChild(menuBtn);
+
+//about us tab button
+const aboutBtn = document.createElement("BUTTON");
+const aboutBtnText = document.createTextNode("About Us");
+aboutBtn.appendChild(aboutBtnText);
+tabLinksClass = document.createAttribute("class");
+tabLinksClass.value = "tabLinks";
+aboutBtn.setAttributeNode(tabLinksClass);
+aboutBtn.setAttribute("data-tab-function", "aboutUs");
+aboutBtn.addEventListener("click", openTab);
+tabs.appendChild(aboutBtn);
+
+document.querySelector("#content").appendChild(tabs);
+
+function openTab(evt){
+	//find tab button (and associated tab) with active class
+	let currentTabBtn = document.querySelector(".active");
+	//remove active from tab button and remove tab elements (as per Odin Project instructions)
+	currentTabBtn.className = currentTabBtn.className.replace(" active", "");
+	let parent = document.querySelector("#content");
+	let child = document.querySelector(".tabContent");
+	console.log(child); 
+	parent.removeChild(child);
+
+	//add active to the clicked button
+	evt.currentTarget.className += " active";
+	let fn = evt.currentTarget.attributes.getNamedItem("data-tab-function").value;
+	tabFunctions[fn]();
+	console.log(document.querySelector(".tabContent"));
+}
+
+//call homePage and set its button to active upon initial page load
+homePageBtn.className += " active";
 Object(__WEBPACK_IMPORTED_MODULE_0__initialPage_js__["a" /* default */])();
-Object(__WEBPACK_IMPORTED_MODULE_1__menu_js__["a" /* default */])();
-Object(__WEBPACK_IMPORTED_MODULE_2__about_js__["a" /* default */])();
+
+
+
 
 /***/ }),
 /* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-const onPageLoad = () => {
+const homePage = () => {
 
 	const content = document.querySelector("#content");
+	const thisTab = document.createElement("DIV");
+	const tabID = document.createAttribute("id");
+	tabID.value = "homePage";
+	thisTab.setAttributeNode(tabID);
+	const tabClass = document.createAttribute("class");
+	tabClass.value = "tabContent";
+	thisTab.setAttributeNode(tabClass);
+
 	let header = document.createElement("H1");
 	let headerText = document.createTextNode("Marshall's Rice Cake Emporium");
 	header.appendChild(headerText);
@@ -104,12 +185,14 @@ const onPageLoad = () => {
 	let spielText = document.createTextNode(spielVal);
 	spiel.appendChild(spielText);
 
-	content.appendChild(header);
-	content.appendChild(img);
-	content.appendChild(spiel);
+	thisTab.appendChild(header);
+	thisTab.appendChild(img);
+	thisTab.appendChild(spiel);
+
+	content.appendChild(thisTab);
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (onPageLoad);
+/* harmony default export */ __webpack_exports__["a"] = (homePage);
 
 /***/ }),
 /* 2 */
@@ -119,12 +202,19 @@ const onPageLoad = () => {
 const menu = () => {
 
 	const content = document.querySelector("#content");
+	const thisTab = document.createElement("DIV");
+	const tabID = document.createAttribute("id");
+	tabID.value = "menu";
+	thisTab.setAttributeNode(tabID);
+	const tabClass = document.createAttribute("class");
+	tabClass.value = "tabContent";
+	thisTab.setAttributeNode(tabClass);
 
 	let menuHeader = document.createElement("H1");
 	let menuHeaderText = document.createTextNode("The Rice Cake Bounty");
 	menuHeader.appendChild(menuHeaderText);
 
-	content.appendChild(menuHeader);
+	thisTab.appendChild(menuHeader);
 
 	let menuList = document.createElement("OL");
 	let menuItems = ["Plain Rice Cake", "Rice Cake with Butter", "Rice Cake with American Cheese Slice",
@@ -137,9 +227,8 @@ const menu = () => {
 		menuList.appendChild(listItem);
 	});
 
-	content.appendChild(menuList);
-	console.log(menuList);
-
+	thisTab.appendChild(menuList);
+	content.appendChild(thisTab);
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (menu);
@@ -152,11 +241,18 @@ const menu = () => {
 const aboutUs = () => {
 
 	const content = document.querySelector("#content");
+	const thisTab = document.createElement("DIV");
+	const tabID = document.createAttribute("id");
+	tabID.value = "aboutUs";
+	thisTab.setAttributeNode(tabID);
+	const tabClass = document.createAttribute("class");
+	tabClass.value = "tabContent";
+	thisTab.setAttributeNode(tabClass);
 
 	let header = document.createElement("H1");
 	let headerText = document.createTextNode("About Us");
 	header.appendChild(headerText);
-	content.appendChild(header);
+	thisTab.appendChild(header);
 
 	let story = document.createElement("P");
 	let storyText = document.createTextNode("Well, see it all started when I stopped eating gluten for a month.  " +
@@ -164,7 +260,8 @@ const aboutUs = () => {
 		"Rice Cakes. It was like devine inspiration. I had some stuff at home and started putting that on the Rice Cakes.  " +
 		" Some say that was the day Marshall's Rice Cake Emporium was conceived.  It took years to gestate, but here it is, birthed in all its wonderful glory.");
 	story.appendChild(storyText);
-	content.appendChild(story);
+	thisTab.appendChild(story);
+	content.appendChild(thisTab);
 
 }
 

@@ -1,12 +1,19 @@
 const menu = () => {
 
 	const content = document.querySelector("#content");
+	const thisTab = document.createElement("DIV");
+	const tabID = document.createAttribute("id");
+	tabID.value = "menu";
+	thisTab.setAttributeNode(tabID);
+	const tabClass = document.createAttribute("class");
+	tabClass.value = "tabContent";
+	thisTab.setAttributeNode(tabClass);
 
 	let menuHeader = document.createElement("H1");
 	let menuHeaderText = document.createTextNode("The Rice Cake Bounty");
 	menuHeader.appendChild(menuHeaderText);
 
-	content.appendChild(menuHeader);
+	thisTab.appendChild(menuHeader);
 
 	let menuList = document.createElement("OL");
 	let menuItems = ["Plain Rice Cake", "Rice Cake with Butter", "Rice Cake with American Cheese Slice",
@@ -19,9 +26,8 @@ const menu = () => {
 		menuList.appendChild(listItem);
 	});
 
-	content.appendChild(menuList);
-	console.log(menuList);
-
+	thisTab.appendChild(menuList);
+	content.appendChild(thisTab);
 }
 
 export default menu;

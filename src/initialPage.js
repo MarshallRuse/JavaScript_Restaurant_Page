@@ -1,6 +1,14 @@
-const onPageLoad = () => {
+const homePage = () => {
 
 	const content = document.querySelector("#content");
+	const thisTab = document.createElement("DIV");
+	const tabID = document.createAttribute("id");
+	tabID.value = "homePage";
+	thisTab.setAttributeNode(tabID);
+	const tabClass = document.createAttribute("class");
+	tabClass.value = "tabContent";
+	thisTab.setAttributeNode(tabClass);
+
 	let header = document.createElement("H1");
 	let headerText = document.createTextNode("Marshall's Rice Cake Emporium");
 	header.appendChild(headerText);
@@ -17,9 +25,11 @@ const onPageLoad = () => {
 	let spielText = document.createTextNode(spielVal);
 	spiel.appendChild(spielText);
 
-	content.appendChild(header);
-	content.appendChild(img);
-	content.appendChild(spiel);
+	thisTab.appendChild(header);
+	thisTab.appendChild(img);
+	thisTab.appendChild(spiel);
+
+	content.appendChild(thisTab);
 };
 
-export default onPageLoad;
+export default homePage;
