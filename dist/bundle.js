@@ -71,11 +71,14 @@
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__initialPage_js__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__menu_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__about_js__ = __webpack_require__(3);
+
 
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__initialPage_js__["a" /* default */])();
 Object(__WEBPACK_IMPORTED_MODULE_1__menu_js__["a" /* default */])();
+Object(__WEBPACK_IMPORTED_MODULE_2__about_js__["a" /* default */])();
 
 /***/ }),
 /* 1 */
@@ -140,6 +143,32 @@ const menu = () => {
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (menu);
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const aboutUs = () => {
+
+	const content = document.querySelector("#content");
+
+	let header = document.createElement("H1");
+	let headerText = document.createTextNode("About Us");
+	header.appendChild(headerText);
+	content.appendChild(header);
+
+	let story = document.createElement("P");
+	let storyText = document.createTextNode("Well, see it all started when I stopped eating gluten for a month.  " +
+		"I was looking for a gluten free alternative to bread, one that was low-cal. BAM. There they were at Metro. " +
+		"Rice Cakes. It was like devine inspiration. I had some stuff at home and started putting that on the Rice Cakes.  " +
+		" Some say that was the day Marshall's Rice Cake Emporium was conceived.  It took years to gestate, but here it is, birthed in all its wonderful glory.");
+	story.appendChild(storyText);
+	content.appendChild(story);
+
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (aboutUs);
 
 /***/ })
 /******/ ]);

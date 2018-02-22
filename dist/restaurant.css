@@ -1,0 +1,16 @@
+body {
+	background-image: url("https://img.aws.livestrongcdn.com/ls-article-image-673/ds-photo/getty/article/114/111/skd187415sdc.jpg");
+}
+#content {
+	background-color: rgba(255,238,204,0.3);
+}
+
+#content img {
+	width: 50%;
+	margin: auto;
+}
+h1 {
+	color: blue;
+	text-align: center;
+	font-weight: bold;
+}
