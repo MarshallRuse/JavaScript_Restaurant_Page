@@ -65,9 +65,81 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-console.log("Hey there");
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__initialPage_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__menu_js__ = __webpack_require__(2);
+
+
+
+Object(__WEBPACK_IMPORTED_MODULE_0__initialPage_js__["a" /* default */])();
+Object(__WEBPACK_IMPORTED_MODULE_1__menu_js__["a" /* default */])();
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const onPageLoad = () => {
+
+	const content = document.querySelector("#content");
+	let header = document.createElement("H1");
+	let headerText = document.createTextNode("Marshall's Rice Cake Emporium");
+	header.appendChild(headerText);
+
+	let img = document.createElement("IMG");
+	let imgSrc = document.createAttribute("src");
+	imgSrc.value = "https://img.aws.livestrongcdn.com/ls-article-image-673/ds-photo/getty/article/211/187/451063615.jpg";
+	img.setAttributeNode(imgSrc);
+
+	let spiel = document.createElement("P");
+	let spielVal = "Welcome to Marshall's Rice Cake Emporium. Enjoy our delicious selection of Rice Cakes, " +
+	"from the humble Peanut Butter Rice Cake, to the slightly more sophisticated Blue Cheese Peanut Butter Rice Cake, " +
+	"to the creme-de-la-creme, the Peanut Butter Blue Cheese All Dressed seasoning Seaweed Rice Cake, and more!";
+	let spielText = document.createTextNode(spielVal);
+	spiel.appendChild(spielText);
+
+	content.appendChild(header);
+	content.appendChild(img);
+	content.appendChild(spiel);
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (onPageLoad);
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const menu = () => {
+
+	const content = document.querySelector("#content");
+
+	let menuHeader = document.createElement("H1");
+	let menuHeaderText = document.createTextNode("The Rice Cake Bounty");
+	menuHeader.appendChild(menuHeaderText);
+
+	content.appendChild(menuHeader);
+
+	let menuList = document.createElement("OL");
+	let menuItems = ["Plain Rice Cake", "Rice Cake with Butter", "Rice Cake with American Cheese Slice",
+	"Rice Cake with Peanut Butter", "Rice Cake with Peanut Butter and Jam", "Rice Cake with Peanut Butter, Jam, Protein Powder",
+	"Rice Cake with Peanut Butter and Seaweed", "Rice Cake with Peanut Butter, Blue Cheese, Seaweed"];
+	menuItems.forEach(function(item){
+		let listItem = document.createElement("LI");
+		let listItemText = document.createTextNode(item);
+		listItem.appendChild(listItemText);
+		menuList.appendChild(listItem);
+	});
+
+	content.appendChild(menuList);
+	console.log(menuList);
+
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (menu);
 
 /***/ })
 /******/ ]);
